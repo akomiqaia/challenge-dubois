@@ -1,11 +1,12 @@
-// import * as parse from '@fast-csv/parse';
+import geoJson from '../../../data/challenge01/geojson.json';
+import data1870 from '../../../data/challenge01/data1870.json';
+import data1880 from '../../../data/challenge01/data1880.json';
 
 export async function load() {
-  const data = await fetch('https://raw.githubusercontent.com/ajstarks/dubois-data-portraits/master/challenge/2024/challenge01/APPLING01-coord.csv')
-  const csv = await data.text()
-  console.log({csv})
 
 	return {
-		
+		geoJson,
+		data1870,
+		data1880
 	};
 }

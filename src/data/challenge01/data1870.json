@@ -1,0 +1,550 @@
+[
+  {
+    "County": "APPLING",
+    "Population": "> 1000"
+  },
+  {
+    "County": "BAKER",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "BALDWIN",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "BANKS",
+    "Population": "> 1000"
+  },
+  {
+    "County": "BARTOW",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "BERRIEN",
+    "Population": "> 1000"
+  },
+  {
+    "County": "BIBB",
+    "Population": "10000 - 15000"
+  },
+  {
+    "County": "BROOKS",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "BRYAN",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "BULLOCH",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "BURKE",
+    "Population": "10000 - 15000"
+  },
+  {
+    "County": "BUTTS",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "CALHOUN",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "CAMDEN",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "CAMPBELL",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "CARROLL",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "CATOOSA",
+    "Population": "> 1000"
+  },
+  {
+    "County": "CHARLTON",
+    "Population": "> 1000"
+  },
+  {
+    "County": "CHATHAM",
+    "Population": "20000 - 30000"
+  },
+  {
+    "County": "CHATTAHOOCHEE",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "CHATTOOGA",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "CHEROKEE",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "CLARKE",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "CLAY",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "CLAYTON",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "CLINCH",
+    "Population": "> 1000"
+  },
+  {
+    "County": "COBB",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "COFFEE",
+    "Population": "> 1000"
+  },
+  {
+    "County": "COLQUITT",
+    "Population": "> 1000"
+  },
+  {
+    "County": "COLUMBIA",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "COWETA",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "CRAWFORD",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "DADE",
+    "Population": "> 1000"
+  },
+  {
+    "County": "DAWSON",
+    "Population": "> 1000"
+  },
+  {
+    "County": "DECATUR",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "DEKALB",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "DODGE",
+    "Population": ""
+  },
+  {
+    "County": "DOOLY",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "DOUGHERTY",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "DOUGLAS",
+    "Population": ""
+  },
+  {
+    "County": "EARLY",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "ECHOLS",
+    "Population": "> 1000"
+  },
+  {
+    "County": "EFFINGHAM",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "ELBERT",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "EMANUEL",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "FANNIN",
+    "Population": "> 1000"
+  },
+  {
+    "County": "FAYETTE",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "FLOYD",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "FORSYTH",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "FRANKLIN",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "FULTON",
+    "Population": "15000 - 20000"
+  },
+  {
+    "County": "GILMER",
+    "Population": "> 1000"
+  },
+  {
+    "County": "GLASCOCK",
+    "Population": "> 1000"
+  },
+  {
+    "County": "GLYNN",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "GORDON",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "GREENE",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "GWINNETT",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "HABERSHAM",
+    "Population": "> 1000"
+  },
+  {
+    "County": "HALL",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "HANCOCK",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "HARALSON",
+    "Population": "> 1000"
+  },
+  {
+    "County": "HARRIS",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "HART",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "HEARD",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "HENRY",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "HOUSTON",
+    "Population": "15000 - 20000"
+  },
+  {
+    "County": "IRWIN",
+    "Population": "> 1000"
+  },
+  {
+    "County": "JACKSON",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "JASPER",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "JEFFERSON",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "JOHNSON",
+    "Population": "> 1000"
+  },
+  {
+    "County": "JONES",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "LAURENS",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "LEE",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "LIBERTY",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "LINCOLN",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "LOWNDES",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "LUMPKIN",
+    "Population": "> 1000"
+  },
+  {
+    "County": "MACON",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "MADISON",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "MARION",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "McDUFFIE",
+    "Population": ""
+  },
+  {
+    "County": "McINTOSH",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "MERIWETHER",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "MILLER",
+    "Population": "> 1000"
+  },
+  {
+    "County": "MILTON",
+    "Population": "> 1000"
+  },
+  {
+    "County": "MITCHELL",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "MONROE",
+    "Population": "10000 - 15000"
+  },
+  {
+    "County": "MONTGOMERY",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "MORGAN",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "MURRAY",
+    "Population": "> 1000"
+  },
+  {
+    "County": "MUSCOGEE",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "NEWTON",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "OCONEE",
+    "Population": ""
+  },
+  {
+    "County": "OGLETHORPE",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "PAULDING",
+    "Population": "> 1000"
+  },
+  {
+    "County": "PICKENS",
+    "Population": "> 1000"
+  },
+  {
+    "County": "PIERCE",
+    "Population": "> 1000"
+  },
+  {
+    "County": "PIKE",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "POLK",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "PULASKI",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "PUTNAM",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "QUITMAN",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "RABUN",
+    "Population": "> 1000"
+  },
+  {
+    "County": "RANDOLPH",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "RICHMOND",
+    "Population": "10000 - 15000"
+  },
+  {
+    "County": "ROCKDALE",
+    "Population": ""
+  },
+  {
+    "County": "SCHLEY",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "SCREVEN",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "SPALDING",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "STEWART",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "SUMTER",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "TALBOT",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "TALIAFERRO",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "TATTNALL",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "TAYLOR",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "TELFAIR",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "TERRELL",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "THOMAS",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "TOWNS",
+    "Population": "> 1000"
+  },
+  {
+    "County": "TROUP",
+    "Population": "10000 - 15000"
+  },
+  {
+    "County": "TWIGGS",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "UNION",
+    "Population": "> 1000"
+  },
+  {
+    "County": "UPSON",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "WALKER",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "WALTON",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "WARE",
+    "Population": "> 1000"
+  },
+  {
+    "County": "WARREN",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "WASHINGTON",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "WAYNE",
+    "Population": "> 1000"
+  },
+  {
+    "County": "WEBSTER",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "WHITE",
+    "Population": "> 1000"
+  },
+  {
+    "County": "WHITFIELD",
+    "Population": "1000 - 2500"
+  },
+  {
+    "County": "WILCOX",
+    "Population": "> 1000"
+  },
+  {
+    "County": "WILKES",
+    "Population": "5000 - 10000"
+  },
+  {
+    "County": "WILKINSON",
+    "Population": "2500 - 5000"
+  },
+  {
+    "County": "WORTH",
+    "Population": "1000 - 2500"
+  }
+ ]
