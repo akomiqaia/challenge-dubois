@@ -1,56 +1,48 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+
 	import { geoIdentity, geoPath } from 'd3-geo';
-	import { scaleOrdinal } from 'd3-scale';
 
-	export let data;
-  export let populationLookup
+	export let geojson;
+	export let populationLookup: string;
+	export let categories;
+	export let colorScale;
 
-	let width, height;
-
-	const geojson = data.geoJson;
+	let width: number, height: number;
 
 	$: projection = geoIdentity().reflectY(true).fitSize([width, height], geojson);
 	$: pathGenerator = geoPath(projection);
 
 	$: counties = geojson.features.map((feature) => {
 		return {
-      color: colorScale(feature.properties[populationLookup]),
+			state: feature.properties.NHGISNAM,
+			color: colorScale(feature.properties[populationLookup]),
 			path: pathGenerator(feature)
 		};
 	});
-  
-	const categories = [
-		'> 1000',
-		'1000 - 2500',
-		'2500 - 5000',
-		'5000 - 10000',
-		'10000 - 15000',
-		'15000 - 20000',
-		'20000 - 30000'
-	];
-	const colorScale = scaleOrdinal().domain(categories).range([
-		'teal',
-		'#ffd700', // gold
-		'#ffc0cb', // pink
-		'#dc143c', // red
-		'#d2b48c', // tan
-		'#654321', // brown
-		'navy'
-	]);
+	const dispatch = createEventDispatcher();
+	function handleMouseOver(state) {
+		dispatch('hover', state);
+	}
 </script>
 
 <div bind:clientWidth={width} bind:clientHeight={height}>
 	<svg {width} {height}>
-		{#each counties as { path, color }}
-			<path d={path} fill={color} />
+		{#each counties as { path, color, state }}
+			<path
+				d={path}
+				fill={color}
+				on:mouseover={() => handleMouseOver(state)}
+				on:focus={() => handleMouseOver(state)}
+			/>
 		{/each}
 	</svg>
 </div>
 
 <style>
 	div {
-		width: 90vw;
-		height: 90vh;
+		width: 50vw;
+		height: 50vh;
 		overflow: hidden;
 	}
 

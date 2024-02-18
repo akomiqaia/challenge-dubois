@@ -1,0 +1,31 @@
+.cardo-regular {
+	font-family: 'Cardo', serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.cardo-bold {
+	font-family: 'Cardo', serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.cardo-regular-italic {
+	font-family: 'Cardo', serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+body {
+	font-family: 'Cardo', serif;
+	font-weight: 400;
+	font-style: normal;
+	/* font-size: 1.6rem; */
+	line-height: 1.6;
+	color: #333;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
