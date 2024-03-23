@@ -1,9 +1,15 @@
+<script context="module" lang="ts">
+	export type geoJsonType = typeof import('../../../data/challenge01/geojson.json');
+</script>
+
 <script lang="ts">
 	import { scaleOrdinal } from 'd3-scale';
 	import GeorgiaState from '$lib/GeorgiaState.svelte';
 
 	export let data;
-	const geoJson = data.geoJson;
+
+	const geoJson: geoJsonType = data.geoJson;
+
 	const categories = [
 		'20000 - 30000',
 		'15000 - 20000',
@@ -13,7 +19,8 @@
 		'1000 - 2500',
 		'> 1000',
 		''
-	];
+	] as const;
+
 	const colorScale = scaleOrdinal().domain(categories).range([
 		'rgba(0, 0, 128, 0.6)', // navy
 		'rgba(101, 67, 33, 0.7)', // brown
@@ -24,6 +31,7 @@
 		'rgba(0, 128, 128, 0.7)', // teal
 		'rgba(255, 255, 255, 0.7)' // white
 	]);
+
 	const categoryMap = {
 		'20000 - 30000': '20,000 TO 30,000',
 		'15000 - 20000': '15,000 TO 20,000',
@@ -31,18 +39,18 @@
 		'5000 - 10000': '5,000 TO 10,000',
 		'2500 - 5000': '2,500 TO 5,000',
 		'1000 - 2500': '1,000 TO 2,500',
-		'> 1000': 'UNDER 1,000'
-	};
+		'> 1000': 'UNDER 1,000',
+		'': 'Unknown'
+	} as const;
 
-	const rightSideLegend = categories.slice(0, 3);
-	const leftSideLegend = categories.slice(3, -1);
-	let currentCategory = null;
-	function hightLightOnlySelected(category) {
+	let currentCategory: null | (typeof categories)[number] = null;
+
+	function hightLightOnlySelected(category: (typeof categories)[number]) {
 		if (currentCategory === category) {
 			currentCategory = null;
 			const paths = document.querySelectorAll('path');
 			paths.forEach((path) => {
-				path.style.opacity = 1;
+				path.style.opacity = '1';
 			});
 			return;
 		}
@@ -50,44 +58,36 @@
 		const paths = document.querySelectorAll('path');
 		paths.forEach((path) => {
 			if (path.getAttribute('fill') === colorScale(category)) {
-				path.style.opacity = 1;
+				path.style.opacity = '1';
 			} else {
-				path.style.opacity = 0.1;
+				path.style.opacity = '0.1';
 			}
 		});
 	}
+
 	let currentlyHovered: {
-		state: string | undefined;
-		population1870: string | undefined;
-		population1880: string | undefined;
+		state: string;
+		population1870: string;
+		population1880: string;
 	} = {
-		state: undefined,
-		population1870: undefined,
-		population1880: undefined
+		state: '',
+		population1870: '',
+		population1880: ''
 	};
-	function handleHover(event) {
+
+	function handleHover(event: { detail: string }) {
 		currentlyHovered.state = event.detail;
-		const p1870 = (currentlyHovered.population1870 = geoJson.features.find(
-			(feature) => feature.properties.NHGISNAM === currentlyHovered.state
-		)?.properties['data1870 (']);
-		const p1880 = geoJson.features.find(
-			(feature) => feature.properties.NHGISNAM === currentlyHovered.state
-		)?.properties.data1880_P;
-		console.log(p1870, p1880);
+		const p1870 = (currentlyHovered.population1870 =
+			geoJson.features.find((feature) => feature.properties.NHGISNAM === currentlyHovered.state)
+				?.properties['data1870 ('] ?? '');
+		const p1880 =
+			geoJson.features.find((feature) => feature.properties.NHGISNAM === currentlyHovered.state)
+				?.properties.data1880_P ?? '';
 		currentlyHovered.population1870 = p1870;
 		currentlyHovered.population1880 = p1880;
 		currentlyHovered = { ...currentlyHovered };
 	}
 </script>
-
-<div id="parchment"></div>
-
-<svg class="parchment-effect">
-	<filter id="wavy2">
-		<feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="4"></feTurbulence>
-		<feDisplacementMap in="SourceGraphic" scale="30" />
-	</filter>
-</svg>
 
 <main>
 	<div class="hover-details">
@@ -120,24 +120,6 @@
 				on:hover={handleHover}
 			/>
 		</div>
-		<div class="legend-wrapper">
-			{#each rightSideLegend as category}
-				<div class="legend" on:click={() => hightLightOnlySelected(category)}>
-					<div class="circle" style="background-color: {colorScale(category)};"></div>
-					<p>{categoryMap[category]}</p>
-				</div>
-			{/each}
-		</div>
-	</div>
-	<div class="content">
-		<div class="legend-wrapper">
-			{#each leftSideLegend as category}
-				<div class="legend" on:click={() => hightLightOnlySelected(category)}>
-					<div class="circle" style="background-color: {colorScale(category)};"></div>
-					<p>{categoryMap[category]}</p>
-				</div>
-			{/each}
-		</div>
 		<div class="map-wrapper">
 			<p class="cardo-bold">1880</p>
 			<GeorgiaState
@@ -149,34 +131,21 @@
 			/>
 		</div>
 	</div>
+	<div class="legend-wrapper">
+		{#each categories as category}
+			<div
+				class="legend"
+				on:mouseenter={() => hightLightOnlySelected(category)}
+				on:mouseleave={() => hightLightOnlySelected(currentCategory)}
+			>
+				<div class="circle" style="background-color: {colorScale(category)};"></div>
+				<p>{categoryMap[category]}</p>
+			</div>
+		{/each}
+	</div>
 </main>
 
 <style>
-	#parchment {
-		position: absolute;
-		display: flex;
-		width: 100vw;
-		min-height: calc((1vw + 1vh) * 75);
-		/* center page with absolute position */
-		top: 0%;
-		left: 50%;
-		transform: translate(-50%, 0);
-		/* margin: 2em; */
-		/* padding: 4em; */
-		box-shadow:
-			2px 3px 20px black,
-			0 0 60px #8a4d0f inset;
-		background: #fffef0;
-		filter: url(#wavy2);
-		z-index: -1;
-	}
-	.parchment-effect {
-		position: absolute;
-	}
-	main {
-		margin: 50px auto;
-		width: 80%;
-	}
 	.hover-details {
 		margin-bottom: 20px;
 		height: 100px;
@@ -198,13 +167,12 @@
 	}
 	.legend-wrapper {
 		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
 	}
 
 	.legend {
 		width: 200px;
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		margin-bottom: 10px;
 		cursor: pointer;
@@ -212,6 +180,7 @@
 	.legend-wrapper p {
 		margin-left: 30px;
 	}
+
 	.map-wrapper > p {
 		margin-left: 30%;
 	}

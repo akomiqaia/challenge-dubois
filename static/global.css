@@ -1,3 +1,15 @@
+:root {
+	--color-black: #000000;
+	--color-brown: #654321;
+	--color-tan: #d2b48c;
+	--color-gold: #ffd700;
+	--color-pink: #ffc0cb;
+	--color-crimson: #dc143c;
+	--color-green: #00aa00;
+	--color-blue: #4682b4;
+	--color-purple: #7e6583;
+}
+
 .cardo-regular {
 	font-family: 'Cardo', serif;
 	font-weight: 400;
@@ -17,13 +29,13 @@
 }
 
 body {
-	font-family: 'Cardo', serif;
+	font-family: 'Public serif', serif;
 	font-weight: 400;
 	font-style: normal;
 	/* font-size: 1.6rem; */
 	line-height: 1.6;
 	color: #333;
-	background-color: #f4f4f4;
+	background-color: blanchedalmond;
 	margin: 0;
 	padding: 0;
 	-webkit-font-smoothing: antialiased;

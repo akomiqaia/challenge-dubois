@@ -1,9 +1,9 @@
 <script lang="ts">
+	import type { geoJsonType } from '../routes/challange/black-people-population-of-georgia-by-county/+page.svelte';
 	import { createEventDispatcher } from 'svelte';
-
 	import { geoIdentity, geoPath } from 'd3-geo';
 
-	export let geojson;
+	export let geojson: geoJsonType;
 	export let populationLookup: string;
 	export let categories;
 	export let colorScale;
@@ -41,8 +41,8 @@
 
 <style>
 	div {
-		width: 50vw;
-		height: 50vh;
+		width: 40vw;
+		height: 40vh;
 		overflow: hidden;
 	}
 
