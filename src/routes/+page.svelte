@@ -8,4 +8,5 @@
 		>
 	</li>
 	<li><a href="/challange/slaves-and-free-black-people">slaves-and-free-black-people</a></li>
+  <li><a href="/challange/acres-of-land-owned-by-black-people">acres-of-land-owned-by-black-people</a></li>
 </div>

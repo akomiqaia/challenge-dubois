@@ -63,7 +63,7 @@
 		<!-- data -->
 		<g class="red-area" clip-path="url(#clipPathId)">
 			<rect x="0" y="0" stroke="#000000" stroke-miterlimit="10" {width} {height} />
-			<path fill="red" d={redArea} />
+			<path fill="var(--color-crimson)" d={redArea} />
 			<path class="path-line" d={path} />
 		</g>
 
