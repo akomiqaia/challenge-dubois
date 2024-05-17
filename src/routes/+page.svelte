@@ -14,4 +14,7 @@
   <li>
     <a href="/challange/race-amalgamation">race amalgamation</a>
   </li>
+  <li>
+    <a href="/challange/literacy">literacy rate</a>
+  </li>
 </div>
