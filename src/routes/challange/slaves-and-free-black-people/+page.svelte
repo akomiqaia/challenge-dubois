@@ -2,92 +2,131 @@
 	import { scaleBand, scaleLinear } from 'd3-scale';
 
 	export let data;
-	const csvData: { Year: string; Free: number }[] = data.csvData.map((d) => {
-		return {
-			Year: d.Year.toString(),
-			Free: d.Free === 100 ? 3 : Number(d.Free)
-		};
-	});
+	const csvData: { Year: string; Free: number }[] = data.csvData
+		.map((d) => {
+			return {
+				Year: d.Year.toString(),
+				Free: d.Free === 100 ? 7 : d.Free
+			};
+		})
+		.reverse();
 
-	const width = 400;
-	const height = 600;
+	let width = 300;
+	let height = 600;
 
-	const margin = { top: 70, right: 20, bottom: 20, left: 50 };
-	const innerHeight = height - margin.top - margin.bottom;
-	const innerWidth = width - margin.left - margin.right;
+	const yTicks = csvData.map((d) => d.Year);
 
-	$: xDomain = csvData.map((d) => d.Year);
-	$: yDomain = csvData.map((d) => d.Free);
+	const xTicks = [3, 2, 1];
+	const padding = { top: 20, right: 15, bottom: 10, left: 15 };
 
-	$: yScale = scaleBand().domain(xDomain).range([0, innerHeight]).padding(0.05);
+	$: xScale = scaleLinear().domain([3, 0]).range([0, width]);
 
-	const rectWidth = innerWidth - 100;
-	$: freePercentageScale = scaleLinear()
-		.domain([0, Math.max.apply(null, yDomain)])
-		.range([0, rectWidth]);
-	$: tickScale = scaleLinear().domain([3, 0]).range([0, rectWidth]);
+	$: yScale = scaleBand()
+		.domain(yTicks)
+		.range([height + height / yTicks.length, 0]);
+
+	$: path = `M${csvData.map((d) => {
+		return `${xScale(d.Free)},${yScale(d.Year)}`;
+	})}`;
+
+	$: redArea = `${path}L${xScale(0)},${yScale(csvData[csvData.length - 1].Year)}L${xScale(0)},${yScale(csvData[0].Year)}Z`;
+
+	// generate  torn effect by adding random points to polygon
+	const randomPoints = (n: number) => {
+		let points: string[] = [];
+
+		// split the height into n points that are randomly distributed and sorted
+		const yPoints = Array.from({ length: n }, () => Math.random() * height - padding.bottom).sort(
+			(a, b) => b - a
+		);
+
+		// for each y point, add a random x point
+		yPoints.forEach((y) => {
+			const x = Math.random() * 8;
+			points.push(`${x},${y}`);
+		});
+		return points.join(' ');
+	};
+	const tornEffectPoints = `0,0 ${width},0 ${width},${height - padding.bottom} 0,${height - padding.bottom}  ${randomPoints(500)} 0,0`;
 </script>
 
 <h2>Slaves and Free Black People</h2>
-<div class="svg-wrapper">
-	<svg {width} {height}>
-		<g transform={`translate(${innerWidth},0)`}>
-			<text dy=".71em" text-anchor="end" font-size="12">
-				<tspan x="0" dy="1.1em">Percent</tspan>
-				<tspan x="0" dy="1.1em">of free</tspan>
-				<tspan x="0" dy="1.1em">black people</tspan>
-			</text>
+
+<div class="area-chart" bind:clientWidth={width}>
+	<svg>
+		<defs>
+			<clipPath id="clipPathId">
+				<polygon points={tornEffectPoints} />
+			</clipPath>
+			<clipPath id="tornEffect"> </clipPath>
+		</defs>
+		<!-- data -->
+		<g class="red-area" clip-path="url(#clipPathId)">
+			<rect x="0" y="0" stroke="#000000" stroke-miterlimit="10" {width} {height} />
+			<path fill="red" d={redArea} />
+			<path class="path-line" d={path} />
 		</g>
-		<g transform={`translate(${margin.left},${margin.top})`}>
-			{#each [3, 2, 1] as tickValue}
-				<g transform={`translate(${tickScale(tickValue)},0)`}>
-					<text text-anchor="middle" dy=".71em" y={-20}>
-						{tickValue}%
-					</text>
-					<line y2={-5} stroke="black" />
+
+		<!-- y axis -->
+		<g>
+			{#each yTicks as tick}
+				<g class="tick" transform="translate(0, {yScale(tick)})">
+					<line x2="100%" />
+					<text text-anchor="end" dy=".32em" x={-25}>{tick}</text>
 				</g>
 			{/each}
-			{#each csvData as d, i}
-				<text text-anchor="end" x="-20" dy=".32em" y={yScale(d.Year)}>
-					{d.Year}
+		</g>
+		<g transform="translate({width + 25}, -60)" class="cardo-bold">
+			<text text-anchor="middle">Percentage of</text>
+			<text dy="1em" text-anchor="middle">free</text>
+			<text dy="2em" text-anchor="middle">black people</text>
+		</g>
+		<g>
+			{#each yTicks as tick, i}
+				<text text-anchor="start" x={width + 25} dy=".32em" y={yScale(tick)}>
+					{csvData[i].Free === 7 ? 100 : csvData[i].Free}%
 				</text>
-				{#if i !== csvData.length - 1}
-					<rect x="0" y={yScale(d.Year)} width={rectWidth} height={yScale.bandwidth()} />
-					{@const x1 = rectWidth - freePercentageScale(d.Free)}
-					{@const y1 = yScale(d.Year)}
-					{@const x2 = rectWidth}
-					{@const y2 = yScale(d.Year)}
-					{@const x3 = rectWidth}
-					{@const y3 = yScale(d.Year) + yScale.bandwidth()}
-					{@const x4 = rectWidth - freePercentageScale(csvData[i + 1].Free)}
-					{@const y4 = yScale(d.Year) + yScale.bandwidth()}
-					{#if i === csvData.length - 2}
-						{@const x5 = rectWidth - freePercentageScale(3)}
-						{@const y5 = yScale(d.Year) + yScale.bandwidth() / 3}
+			{/each}
+		</g>
 
-						<polygon points={`${x1},${y1} ${x2},${y2} ${x3},${y3} ${x4},${y4} ${x5},${y5}`} />
-					{:else}
-						<polygon points={`${x1},${y1} ${x2},${y2} ${x3},${y3} ${x4},${y4}`} fill="red" />
-					{/if}
-				{/if}
-				<text text-anchor="start" x={rectWidth + 20} dy=".32em" y={yScale(d.Year)}>
-					{d.Free}%
-				</text>
+		<!-- x axis -->
+		<g class="axis x-axis">
+			{#each xTicks as tick}
+				<g transform="translate({xScale(tick) - 10}, {-10})">
+					<text text-anchor="start">{tick}%</text>
+					<line x1={10} y1={0} x2={10} y2={10} stroke="black" />
+				</g>
 			{/each}
 		</g>
 	</svg>
 </div>
 
 <style>
-	.svg-wrapper {
+	.area-chart {
 		width: 100%;
+		max-width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 70px;
 	}
 
-	svg g rect {
-		fill: var(--color-black);
+	svg {
+		position: relative;
+		width: 100%;
+		height: 600px;
+		overflow: visible;
 	}
 
-	svg polygon {
-		fill: var(--color-crimson);
+	.tick line {
+		stroke: white;
+		stroke-width: 1.5;
+	}
+
+	.path-line {
+		fill: none;
+		stroke: white;
+		stroke-linejoin: round;
+		stroke-linecap: round;
+		stroke-width: 1.5;
 	}
 </style>
